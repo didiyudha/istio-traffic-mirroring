@@ -16,14 +16,14 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		r := Response{
-			Message: "OK from server v1",
+			Message: "OK from server mirror",
 		}
 		b, err := json.Marshal(r)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		log.Println("Response from server v1")
+		log.Println("Response from server mirror")
 		_, err = w.Write(b)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
