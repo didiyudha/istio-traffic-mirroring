@@ -11,4 +11,4 @@ RUN apk upgrade --update-cache --available && \
 WORKDIR /app
 COPY --from=0 /usr/app/server-mirror ./
 EXPOSE 8080
-ENTRYPOINT ["/app/server-app"]
+ENTRYPOINT ["/app/server-mirror"]
