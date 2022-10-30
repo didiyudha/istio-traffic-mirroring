@@ -10,3 +10,7 @@ client.image:
 .PHONY: server.image
 server.image:
 	docker build -t didiyudha/server-app:v1.0.0 ./server
+
+.PHONY: server.mirror.image
+server.mirror.image:
+	docker build -t didiyudha/server-app:mirror ./server
