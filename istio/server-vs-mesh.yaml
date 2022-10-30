@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: server-virtualservice-mesh
+  namespace: mirror-traffic
+spec:
+  gateways:
+  - mesh
+  hosts:
+  - server.mirror-traffic.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: server.mirror-traffic.svc.cluster.local
+        port:
+          number: 8080

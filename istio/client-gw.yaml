@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: client-gateway
+  namespace: mirror-traffic
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - client.mirror-traffic.io
+    port:
+      name: http
+      number: 80
+      protocol: HTTP

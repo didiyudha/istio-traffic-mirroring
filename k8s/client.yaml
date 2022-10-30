@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: client
+    version: v1.0.0
+  name: client
+  namespace: mirror-traffic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+      version: v1.0.0
+  template:
+    metadata:
+      labels:
+        app: client
+        version: v1.0.0
+    spec:
+      containers:
+      - image: didiyudha/client-app:v1.0.0
+        imagePullPolicy: Always
+        name: client
+        ports:
+          - containerPort: 3000
+            protocol: TCP
+        env:
+          - name: SERVER_HOST
+            value: "server.mirror-traffic.svc.cluster.local"
+          - name: SERVER_PORT
+            value: "8080"

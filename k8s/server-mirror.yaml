@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   labels:
     app: server
-    version: v2
-  name: server-v2
+    version: mirror
+  name: server-mirror
   namespace: mirror-traffic
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: server
-      version: v2
+      version: mirror
   template:
     metadata:
       labels:
         app: server
-        version: v2
+        version: mirror
     spec:
       containers:
-      - image: didiyudha/server:v2
+      - image: didiyudha/server-app:mirror
         imagePullPolicy: Always
-        name: server
+        name: server-mirror
         ports:
           - containerPort: 8080
             protocol: TCP

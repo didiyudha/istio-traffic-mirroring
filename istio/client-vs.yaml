@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: client-virtualservice
+  namespace: mirror-traffic
+spec:
+  gateways:
+  - client-gateway
+  hosts:
+  - client.mirror-traffic.io
+  http:
+  - route:
+    - destination:
+        host: client.mirror-traffic.svc.cluster.local
+        port:
+          number: 3000
